@@ -91,6 +91,7 @@ router.get('/viewSuppliers/:idItems',function(req,res){
   })
 })
 
+// Get "view customers" page
 router.get('/viewCustomers/:idItems',function(req,res){
   model.Item.findAll(
     {

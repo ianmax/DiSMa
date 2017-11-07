@@ -108,7 +108,8 @@ router.get('/suppliers/:idSuppliers/completeOrders',function(req,res){
               item_price: itemPrice,
               createdAt: new Date(),
               updatedAt: new Date(),
-              SupplierId: req.params.idSuppliers
+              SupplierId: req.params.idSuppliers,
+              ItemId: itemId
             }
           ).then(function(){
             model.Supplier_item.destroy(

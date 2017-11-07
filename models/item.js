@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     Item.hasMany(model.Supplier)
     Item.hasMany(model.Customer_item)
     Item.hasMany(model.Supplier_item)
+    Item.hasMany(model.Customer_history)
+    Item.hasMany(model.Supplier_history)
     Item.belongsToMany(model.Customer,{through:'Customer_item'})
     Item.belongsToMany(model.Supplier,{through: 'Supplier_item'})
   }

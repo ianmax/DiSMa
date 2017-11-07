@@ -27,6 +27,9 @@ module.exports = {
       },
       SupplierId: {
         type: Sequelize.INTEGER
+      },
+      ItemId: {
+        type: Sequelize.INTEGER
       }
     });
   },
