@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Supplier Page</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Supplier First Name</th>
+      <th>Supplier Last Name</th>
+      <th>Supplier Email</th>
+    </tr>
+    <% for(let i = 0; i < dataJsonSuppliers.length; i++){ %>
+      <tr>
+        <td><%= dataJsonSuppliers[i].id %></td>
+        <td><%= dataJsonSuppliers[i].first_name %></td>
+        <td><%= dataJsonSuppliers[i].last_name %></td>
+        <td><%= dataJsonSuppliers[i].email %></td>
+        <td><a href="/suppliers/edit/<%= dataJsonSuppliers[i].id %>">Edit</a></td>
+        <td><a href="/suppliers/delete/<%= dataJsonSuppliers[i].id %>">Delete</a></td>
+        <td><a href="/suppliersOrders/suppliers/<%= dataJsonSuppliers[i].id %>/viewOrders">View Orders</a></td>
+      </tr>
+    <% } %>
+  </table>
+  <button type="button" name="button"><a href="/suppliers/add">Add New Supplier</a></button>
+</body>
+</html>

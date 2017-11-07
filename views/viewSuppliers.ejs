@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Suppliers For: <%= dataJsonItems[0].item_name %></h1>
+  <table>
+      <tr>
+        <th>Supplier Name</th>
+        <th>Item QTY Supplied</th>
+        <th>Item Supply Date</th>
+      </tr>
+    <% for(let i = 0; i < dataJsonSuppliers.length; i++){ %>
+      <% for(let y = 0; y < dataJsonSuppliersHistories.length; y++){ %>
+        <% if(dataJsonItems[0].item_name === dataJsonSuppliersHistories[y].item_name && dataJsonSuppliersHistories[y].SupplierId === dataJsonSuppliers[i].id){ %>
+        <tr>
+          <td><%= dataJsonSuppliers[i].first_name %></td>
+          <td><%= dataJsonSuppliersHistories[y].item_qty_supplied %></td>
+          <td><%= dataJsonSuppliersHistories[y].createdAt %></td>
+        </tr>
+        <% } %>
+      <% } %>
+    <% } %>
+  </table>
+</body>
+</html>

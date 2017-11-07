@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Edit Items Page</h1>
+  <form class="editItems" action="/items/edit/<%= dataJsonItems[0].id %>" method="post">
+    Input Items Name: <br>
+    <input type="text" name="item_name" value="<%= dataJsonItems[0].item_name %>">
+    <br>
+    Input Items QTY: <br>
+    <input type="text" name="item_qty" value="<%= dataJsonItems[0].item_qty %>">
+    <br>
+    Input Items Price: <br>
+    <input type="text" name="item_price" value="<%= dataJsonItems[0].item_price %>">
+    <br><br>
+    <input type="submit" name="submit" value="Submit">
+  </form>
+</body>
+</html>

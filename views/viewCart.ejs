@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>View <%= dataJsonCustomers[0].first_name %> Cart</h1>
+  <table>
+    <tr>
+      <th>Item Name</th>
+      <th>Item QTY</th>
+      <th>Item Price</th>
+      <th>Order Date</th>
+    </tr>
+    <% for(let i = 0; i < dataJsonItems.length; i++){ %>
+      <% for(let y = 0; y < dataJsonCustomersItems.length; y++){ %>
+        <% if(dataJsonItems[i].id === dataJsonCustomersItems[y].ItemId){ %>
+          <tr>
+            <td><%= dataJsonItems[i].item_name %></td>
+            <td><%= dataJsonCustomersItems[y].qtyBuy %></td>
+            <td><%= dataJsonItems[i].item_price %></td>
+            <td><%= dataJsonCustomersItems[y].createdAt %></td>
+            <td><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>/<%= dataJsonCustomersItems[y].id %>/delete">Remove from cart</a></td>
+          </tr>
+        <% } %>
+      <% } %>
+    <% } %>
+  </table>
+  <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>">Add More Items</a></button>
+  <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>/approveOrders">Approve Orders</a></button>
+</body>
+</html>
