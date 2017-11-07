@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Add Customers Page</h1>
+  <% if(hasOwnProperty('error')){ %>
+    <h4 style="color: red">Please Input The Correct Email Format!</h4>
+  <% } %>
+  <form class="addCustomers" action="/customers/add" method="post">
+    Input Customers First Name: <br>
+    <input type="text" name="first_name" value="">
+    <br>
+    Input Customers Last Name: <br>
+    <input type="text" name="last_name" value="">
+    <br>
+    Input Customers Email: <br>
+    <input type="text" name="email" value="">
+    <br><br>
+    <input type="submit" name="submit" value="submit">
+  </form>
+</body>
+</html>

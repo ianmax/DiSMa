@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Add Suppliers Page</h1>
+  <% if(hasOwnProperty('error')){ %>
+    <h4 style="color: red">Please Input The Correct Email Format!</h4>
+  <% } %>
+  <form class="addSuppliers" action="/customers/add" method="post">
+    Input Suppliers First Name: <br>
+    <input type="text" name="first_name" value="">
+    <br>
+    Input Suppliers Last Name: <br>
+    <input type="text" name="last_name" value="">
+    <br>
+    Input Suppliers Email: <br>
+    <input type="text" name="email" value="">
+    <br><br>
+    <input type="submit" name="submit" value="submit">
+  </form>
+</body>
+</html>

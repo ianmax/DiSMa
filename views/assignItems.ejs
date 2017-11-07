@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Suppliers Name: <%= dataJsonSuppliers[0].first_name %></h1>
+  <br><br>
+  Assign items for this supplier: <br>
+  <select class="assignItem" name="ItemId">
+    <% for(let i = 0; i < dataJsonItems.length; i++){ %>
+      <% if(dataJsonItems[i].id === dataJsonSuppliers[0].ItemId){ %>
+        <option value="<%= dataJsonItems[i].id %>" selected><%= dataJsonItems[i].item_name %></option>
+      <% } else {%>
+        <option value="<%= dataJsonItems[i].id %>"><%= dataJsonItems[i].item_name %></option>
+      <% } %>
+    <% } %>
+  </select>
+</body>
+</html>

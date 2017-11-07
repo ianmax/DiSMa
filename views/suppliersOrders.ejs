@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Supplies Order Page</h1>
+  <h5>Welcome, <%= dataJsonSuppliers[0].first_name %> !</h5>
+  <br>
+  <table>
+    <tr>
+      <th>Item Name</th>
+      <th>Item Price</th>
+      <th>Input Quantity</th>
+    </tr>
+    <% for(let i = 0; i < dataJsonItems.length; i++){ %>
+      <tr>
+        <td><%= dataJsonItems[i].item_name %></td>
+        <form class="inputAttributes" action="/suppliersOrders/suppliers/<%= dataJsonSuppliers[0].id %>/<%= dataJsonItems[i].id %>/addToOrder" method="post">
+          <td><input type="number" name="item_price" value=""></td>
+          <td><input type="number" name="qtySupply" value=""></td>
+          <td><input type="submit" name="submit" value="Supply"></td>
+        </form>
+      </tr>
+    <% } %>
+  </table>
+  <button type="button" name="button"><a href="/suppliersOrders/suppliers/<%= dataJsonSuppliers[0].id %>/viewOrders">View Orders</a></button>
+</body>
+</html>
