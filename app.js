@@ -2,9 +2,10 @@ let express = require('express')
 let app = express()
 let bodyParser = require('body-parser')
 
-app.use(bodyParser.urlencoded({extended:true}))
-app.set('view engine','ejs')
 
+app.use(bodyParser.urlencoded({extended:true}))
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 let index = require('./routers/index.js')
 let customers = require('./routers/customers.js')
 let suppliers = require('./routers/suppliers.js')

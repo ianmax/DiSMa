@@ -14,7 +14,7 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
       'Supplier_items',
-      'item_price',
+      'item_price'
     )
   }
 };

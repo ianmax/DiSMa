@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Items Page</h1>
-  <table>
+<%- include ./partials/header %>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table" id="items">
     <tr>
       <th>Items ID</th>
       <th>Items QTY</th>
       <th>Items Name</th>
       <th>Items Price</th>
+      <th colspan="4">Options</th>
     <% for(let i = 0; i < dataJsonItems.length; i++){ %>
       <tr>
         <td><%= dataJsonItems[i].id %></td>
@@ -27,7 +21,10 @@
       </tr>
     <% } %>
   </table>
+</div>
   <br><br>
   <button type="button" name="button"><a href="/items/add">Add New Items</a></button>
+</div>
+<%- include ./partials/footer %>
 </body>
 </html>
