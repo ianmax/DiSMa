@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Supplier Page</h1>
-  <table>
+<%- include ./partials/header %>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table" id="supplier">
     <tr>
       <th>ID</th>
       <th>Supplier First Name</th>
       <th>Supplier Last Name</th>
       <th>Supplier Email</th>
+      <th colspan="3">Options</th>
     </tr>
     <% for(let i = 0; i < dataJsonSuppliers.length; i++){ %>
       <tr>
@@ -27,6 +21,9 @@
       </tr>
     <% } %>
   </table>
+</div>
   <button type="button" name="button"><a href="/suppliers/add">Add New Supplier</a></button>
+</div>
+  <%- include ./partials/footer %>
 </body>
 </html>

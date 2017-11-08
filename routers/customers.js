@@ -3,15 +3,15 @@ let router = express.Router()
 let model = require('../models')
 
 // List all customers
-router.get('/',function(req,res){
-  model.Customer.findAll().then(function(rows){
-    res.render('customers',{dataJsonCustomers:rows})
-  })
-})
+router.get('/', function (req, res) {
+  model.Customer.findAll().then(function (rows) {
+    res.render('customers', { dataJsonCustomers: rows, pageTitle: 'DiSMa: Customer Page' });
+  });
+});
 
 // Get "add customers" page
 router.get('/add',function(req,res){
-  res.render('addCustomers')
+  res.render('addCustomers', { pageTitle: 'DiSMa: Add Customer' })
 })
 
 // Post added customers
@@ -38,7 +38,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editCustomers',{dataJsonCustomers:rows})
+    res.render('editCustomers',{dataJsonCustomers:rows, pageTitle: 'DiSMa: Edit Customer'})
   })
 })
 

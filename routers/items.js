@@ -5,13 +5,13 @@ let model = require('../models')
 // List all items
 router.get('/',function(req,res){
   model.Item.findAll().then(function(rows){
-    res.render('items',{dataJsonItems:rows})
+    res.render('items',{dataJsonItems:rows, pageTitle: 'DiSMa: Items Page'})
   })
 })
 
 // Get "add items" page
 router.get('/add',function(req,res){
-  res.render('addItems')
+  res.render('addItems', {pageTitle: 'DiSMa: Add Item'})
 })
 
 // Post added items
@@ -36,7 +36,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editItems',{dataJsonItems:rows})
+    res.render('editItems',{dataJsonItems:rows, pageTitle: 'DiSMa: Edit Item'})
   })
 })
 
@@ -85,6 +85,7 @@ router.get('/viewSuppliers/:idItems',function(req,res){
           dataJsonItems: rowsItems,
           dataJsonSuppliersHistories: rowsSuppliersHistories,
           dataJsonSuppliers: rowsSuppliers,
+          pageTitle: 'DiSMa: View Supplier'
         })
       })
     })
@@ -109,6 +110,7 @@ router.get('/viewCustomers/:idItems',function(req,res){
           dataJsonItems: rowsItems,
           dataJsonCustomersHistories: rowsCustomersHistories,
           dataJsonCustomers: rowsCustomers,
+          pageTitle: 'DiSMa: View Customer'
         })
       })
     })

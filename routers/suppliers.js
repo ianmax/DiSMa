@@ -5,13 +5,13 @@ let model = require('../models')
 // List all suppliers
 router.get('/',function(req,res){
   model.Supplier.findAll().then(function(rows){
-    res.render('suppliers',{dataJsonSuppliers:rows})
+    res.render('suppliers',{dataJsonSuppliers:rows, pageTitle: 'DiSMa: Supplier Page' });
   })
 })
 
 // Get "add supplier" page
 router.get('/add',function(req,res){
-  res.render('addSuppliers')
+  res.render('addSuppliers', { pageTitle: 'DiSMa: Add Supplier' });
 })
 
 // Post added supplier
@@ -38,7 +38,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editSuppliers',{dataJsonSuppliers:rows})
+    res.render('editSuppliers',{dataJsonSuppliers:rows, pageTitle: 'DiSMa: Edit Supplier'})
   })
 })
 

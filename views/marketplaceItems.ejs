@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Purchase Order Page</h1>
+<%- include ./partials/header %>
+<div class="container">
+  <h3>Purchase Order Page</h3>
   <h5>Welcome, <%= dataJsonCustomers[0].first_name %> !</h5>
   <br>
   <table>
@@ -30,5 +23,7 @@
     <% } %>
   </table>
   <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>/viewCart">View Cart</a></button>
+</div>
+<%- include ./partials/footer %>
 </body>
 </html>
