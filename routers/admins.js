@@ -1,6 +1,7 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+const convertToRupiah = require('../helper/rupiah');
 
 // Get "admin dashboard" page
 router.get('/',function(req,res){
@@ -38,7 +39,8 @@ router.get('/',function(req,res){
           dataJsonSuppliersHistories: arrSumSuppliersPrice,
           dataJsonSumRevenue: countRevenue,
           dataJsonSumQty: countQty,
-          dataJsonSumProfit: countProfit
+          dataJsonSumProfit: countProfit,
+          pageTitle: 'DiSMa: Admin Page'
         })
       })
     })

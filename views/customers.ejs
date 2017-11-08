@@ -12,7 +12,7 @@
     <% for(let i = 0; i < dataJsonCustomers.length; i++){ %>
       <tr>
         <td><%= dataJsonCustomers[i].id %></td>
-        <td><%= dataJsonCustomers[i].first_name %></td>
+        <td class='name'><%= dataJsonCustomers[i].first_name %></td>
         <td><%= dataJsonCustomers[i].last_name %></td>
         <td><%= dataJsonCustomers[i].email %></td>
         <td><a href="/customers/edit/<%= dataJsonCustomers[i].id %>">Edit</a></td>

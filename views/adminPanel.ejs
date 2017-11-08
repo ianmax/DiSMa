@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+<%- include ./partials/header %>
+<div class="container">
   <h1>admin panel</h1>
   <h4>Total Items Sold: <%= dataJsonSumQty %></h4>
   <h4>Total Revenue Earned: <%= dataJsonSumRevenue %></h4>
@@ -39,6 +32,16 @@
       <% } %>
     <% } %>
   </table>
-
+</div>
+<%- include ./partials/footer %>
+<script>
+function convertToRupiah(angka)
+{
+  var rupiah = '';
+  var angkarev = angka.toString().split('').reverse().join('');
+  for (var i = 0; i < angkarev.length; i++) if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+  return 'Rp. ' + rupiah.split('', rupiah.length - 1).reverse().join('');
+}
+</script>
 </body>
 </html>
