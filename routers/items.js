@@ -1,10 +1,16 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+let formatCurrency = require('format-currency')
+let opts = { format: '%s%v', symbol: 'IDR ' }
 
 // List all items
 router.get('/',function(req,res){
   model.Item.findAll().then(function(rows){
+    for(let i = 0; i < rows.length; i++){
+      rows[i].item_selling_price = formatCurrency(rows[i].item_selling_price,opts)
+      rows[i].item_price = formatCurrency(rows[i].item_price,opts)
+    }
     res.render('items',{dataJsonItems:rows})
   })
 })

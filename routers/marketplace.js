@@ -1,6 +1,8 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+let formatCurrency = require('format-currency')
+let opts = { format: '%s%v', symbol: 'IDR ' }
 
 // Get marketplace main page - customers
 router.get('/customers/:id',function(req,res){
@@ -55,6 +57,9 @@ router.get('/customers/:idCustomers/viewCart',function(req,res){
       }
     ).then(function(rowsCustomers){
       model.Item.findAll().then(function(rowsItems){
+        for(let i = 0; i < rowsItems.length; i++){
+          rowsItems[i].item_price = formatCurrency(rowsItems[i].item_price,opts)
+        }
         res.render('viewCart',
         {
           dataJsonCustomersItems:rowsCustomersItems,

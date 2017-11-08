@@ -50,7 +50,8 @@ router.get('/',function(req,res){
       dataJsonSuppliersHistories: arrSumSuppliersPrice,
       dataJsonSumRevenue: countRevenue,
       dataJsonSumProfit: countProfit,
-      dataJsonSumQty: countQty
+      dataJsonSumQty: countQty,
+      dataJsonQuerry: req.query
     })
   })
 })

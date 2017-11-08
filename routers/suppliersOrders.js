@@ -1,6 +1,8 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+let formatCurrency = require('format-currency')
+let opts = { format: '%s%v', symbol: 'IDR ' }
 
 // Get marketplace main page - suppliers
 router.get('/suppliers/:id',function(req,res){
@@ -49,6 +51,9 @@ router.get('/suppliers/:idSuppliers/viewOrders',function(req,res){
       where: {SupplierId: req.params.idSuppliers}
     }
   ).then(function(rowsSuppliersItems){
+    for(let i = 0; i < rowsSuppliersItems.length; i++){
+      rowsSuppliersItems[i].item_price = formatCurrency(rowsSuppliersItems[i].item_price,opts)
+    }
     model.Supplier.findAll(
       {
         where: {id: req.params.idSuppliers}
