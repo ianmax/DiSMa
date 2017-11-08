@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Customer Page</h1>
-  <table>
+<%- include ./partials/header %>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table" id="customer">
     <tr>
       <th>ID</th>
       <th>Customer First Name</th>
       <th>Customer Last Name</th>
       <th>Customer Email</th>
+      <th colspan="3">Options</th>
     </tr>
     <% for(let i = 0; i < dataJsonCustomers.length; i++){ %>
       <tr>
         <td><%= dataJsonCustomers[i].id %></td>
-        <td><%= dataJsonCustomers[i].first_name %></td>
+        <td class='name'><%= dataJsonCustomers[i].first_name %></td>
         <td><%= dataJsonCustomers[i].last_name %></td>
         <td><%= dataJsonCustomers[i].email %></td>
         <td><a href="/customers/edit/<%= dataJsonCustomers[i].id %>">Edit</a></td>
@@ -27,6 +21,9 @@
       </tr>
     <% } %>
   </table>
+</div>
   <button type="button" name="button"><a href="/customers/add">Add New Customer</a></button>
+</div>
+<%- include ./partials/footer %>
 </body>
 </html>

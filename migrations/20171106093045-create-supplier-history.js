@@ -24,12 +24,6 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      SupplierId: {
-        type: Sequelize.INTEGER
-      },
-      ItemId: {
-        type: Sequelize.INTEGER
       }
     });
   },

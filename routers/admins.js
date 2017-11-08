@@ -1,12 +1,13 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+
 let formatCurrency = require('format-currency')
 let opts = { format: '%s%v', symbol: 'IDR ' }
 
-
 // Get "admin dashboard" page
 router.get('/',function(req,res){
+
   model.Customer_history.findAll(
     {
       include: [model.Supplier,model.Customer]
