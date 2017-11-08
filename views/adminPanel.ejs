@@ -1,6 +1,57 @@
 <%- include ./partials/header %>
 <div class="container">
   <h1>admin panel</h1>
+  <form class="checkDate" action="/admins" method="get">
+    Start Date:
+    <select class="day" name="day">
+      <% for(let i = 1; i < 13; i++){%>
+        <option value="<%= i %>"><%= i %></option>
+      <%}%>
+    </select>
+    <select class="month" name="month">
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">February</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+    <select class="year" name="year">
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+    </select>
+    End Date:
+    <select class="day" name="dayEnd">
+      <% for(let i = 1; i < 13; i++){%>
+        <option value="<%= i %>"><%= i %></option>
+      <%}%>
+    </select>
+    <select class="month" name="monthEnd">
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">February</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+    <select class="year" name="yearEnd">
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+    </select>
+    <input type="submit" name="submit" value="submit">
+  </form>
   <h4>Total Items Sold: <%= dataJsonSumQty %></h4>
   <h4>Total Revenue Earned: <%= dataJsonSumRevenue %></h4>
   <h4>Total Profit Earned: <%= dataJsonSumProfit %></h4>
@@ -15,21 +66,15 @@
       <th>Transaction Date</th>
     </tr>
     <% for(let i = 0; i < dataJsonCustomersHistories.length; i++){ %>
-      <% for(let y = 0; y < dataJsonSuppliersHistories.length; y++){ %>
-        <% for(let k = 0; k < dataJsonCustomers.length; k++){ %>
-          <% if(dataJsonCustomers[k].id === dataJsonCustomersHistories[i].CustomerId && dataJsonSuppliersHistories[y].ItemId === dataJsonCustomersHistories[i].ItemId){ %>
-            <tr>
-              <td><%= i+1 %></td>
-              <td><%= dataJsonCustomers[k].first_name %></td>
-              <td><%= dataJsonCustomersHistories[i].item_name %></td>
-              <td><%= dataJsonCustomersHistories[i].item_qty_buyed %></td>
-              <td><%= dataJsonCustomersHistories[i].item_price %></td>
-              <td><%= dataJsonSuppliersHistories[y].item_price %></td>
-              <td><%= dataJsonCustomersHistories[i].createdAt %></td>
-            </tr>
-          <% } %>
-        <% } %>
-      <% } %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= dataJsonCustomersHistories[i].Customer.first_name %></td>
+        <td><%= dataJsonCustomersHistories[i].item_name %></td>
+        <td><%= dataJsonCustomersHistories[i].item_qty_buyed %></td>
+        <td><%= dataJsonCustomersHistories[i].item_price %></td>
+        <td><%= dataJsonCustomersHistories[i].item_price_supplied %></td>
+        <td><%= dataJsonCustomersHistories[i].createdAt %></td>
+      </tr>
     <% } %>
   </table>
 </div>

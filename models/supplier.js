@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     Supplier.belongsTo(model.Item)
     Supplier.hasMany(model.Supplier_item)
     Supplier.hasMany(model.Supplier_history)
+    Supplier.hasMany(model.Customer_history)
     Supplier.belongsToMany(model.Item,{through: 'Supplier_item'})
   }
   return Supplier;
