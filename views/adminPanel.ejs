@@ -1,6 +1,12 @@
 <%- include ./partials/header %>
 <div class="container">
   <h1>admin panel</h1>
+  <% console.log(dataJsonQuerry) %>
+  <% if(dataJsonQuerry){ %>
+    <h4>You've selected <%= dataJsonQuerry.day %> <%= dataJsonQuerry.month %> <%= dataJsonQuerry.year %> - <%= dataJsonQuerry.dayEnd %> <%= dataJsonQuerry.monthEnd %> <%= dataJsonQuerry.yearEnd %></h4>
+  <% } else {%>
+    <h4>Please</h4>
+  <% } %>
   <form class="checkDate" action="/admins" method="get">
     Start Date:
     <select class="day" name="day">

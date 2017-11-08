@@ -9,6 +9,7 @@
       <th>Items QTY</th>
       <th>Name</th>
       <th>Items Price</th>
+      <th>Items Buying Price</th>
       <th colspan="4">Options</th>
     </tr>
     <% for(let i = 0; i < dataJsonItems.length; i++){ %>
@@ -17,6 +18,7 @@
         <td><%= dataJsonItems[i].item_qty %></td>
         <td><%= dataJsonItems[i].item_name %></td>
         <td><%= dataJsonItems[i].item_price %></td>
+        <td><%= dataJsonItems[i].item_selling_price %></td>
         <td><a href="/items/viewSuppliers/<%= dataJsonItems[i].id %>">View Suppliers</a></td>
         <td><a href="/items/viewCustomers/<%= dataJsonItems[i].id %>">View Customers</a></td>
         <td><a href="/items/edit/<%= dataJsonItems[i].id %>">Edit</a></td>

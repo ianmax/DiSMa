@@ -1,6 +1,8 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+let formatCurrency = require('format-currency')
+let opts = { format: '%s%v', symbol: 'IDR ' }
 
 // Get marketplace main page - customers
 router.get('/customers/:id',function(req,res){
@@ -56,6 +58,9 @@ router.get('/customers/:idCustomers/viewCart',function(req,res){
       }
     ).then(function(rowsCustomers){
       model.Item.findAll().then(function(rowsItems){
+        for(let i = 0; i < rowsItems.length; i++){
+          rowsItems[i].item_price = formatCurrency(rowsItems[i].item_price,opts)
+        }
         res.render('viewCart',
         {
           dataJsonCustomersItems:rowsCustomersItems,
@@ -93,6 +98,7 @@ router.get('/customers/:idCustomers/approveOrders',function(req,res){
       let itemQty = dataCustomersItems[i].Item.item_qty
       let itemName = dataCustomersItems[i].Item.item_name
       let itemPrice = dataCustomersItems[i].Item.item_price
+      let itemSellingPrice = dataCustomersItems[i].Item.item_selling_price
       if(dataCustomersItems[i].ItemId === itemId){
         itemQty -= dataCustomersItems[i].qtyBuy
         model.Item.update(
@@ -108,6 +114,7 @@ router.get('/customers/:idCustomers/approveOrders',function(req,res){
               item_name: itemName,
               item_qty_buyed: dataCustomersItems[i].qtyBuy,
               item_price: itemPrice,
+              item_price_supplied: itemSellingPrice,
               CustomerId: req.params.idCustomers,
               ItemId: itemId,
               createdAt: new Date(),
