@@ -24,5 +24,5 @@ app.use('/admins',admins)
 
 // Listening Server
 app.listen(14045,function(){
-  console.log(`Dengan Hotline KFC, ada yg bisa dibantu?`);
+  console.log(`Calling 14045 --> Dengan Hotline KFC, mau pesan paha apa dada?`);
 })
