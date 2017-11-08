@@ -91,6 +91,7 @@ router.get('/customers/:idCustomers/approveOrders',function(req,res){
       let itemQty = dataCustomersItems[i].Item.item_qty
       let itemName = dataCustomersItems[i].Item.item_name
       let itemPrice = dataCustomersItems[i].Item.item_price
+      let itemSellingPrice = dataCustomersItems[i].Item.item_selling_price
       if(dataCustomersItems[i].ItemId === itemId){
         itemQty -= dataCustomersItems[i].qtyBuy
         model.Item.update(
@@ -106,6 +107,7 @@ router.get('/customers/:idCustomers/approveOrders',function(req,res){
               item_name: itemName,
               item_qty_buyed: dataCustomersItems[i].qtyBuy,
               item_price: itemPrice,
+              item_price_supplied: itemSellingPrice,
               CustomerId: req.params.idCustomers,
               ItemId: itemId,
               createdAt: new Date(),

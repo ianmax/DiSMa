@@ -21,6 +21,7 @@ router.post('/add',function(req,res){
       item_qty: req.body.item_qty,
       item_name: req.body.item_name,
       item_price: req.body.item_price,
+      item_selling_price: req.body.item_selling_price,
       createdAt: new Date(),
       updatedAt: new Date()
     }
