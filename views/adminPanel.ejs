@@ -61,7 +61,8 @@
   <h4>Total Items Sold: <%= dataJsonSumQty %></h4>
   <h4>Total Revenue Earned: <%= dataJsonSumRevenue %></h4>
   <h4>Total Profit Earned: <%= dataJsonSumProfit %></h4>
-  <table>
+  <div class="table-responsive">
+    <table class="table" id="adminPanel">
     <tr>
       <th>No</th>
       <th>Customer Name</th>
@@ -83,6 +84,7 @@
       </tr>
     <% } %>
   </table>
+</div>
 </div>
 <%- include ./partials/footer %>
 <script>

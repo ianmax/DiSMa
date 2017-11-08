@@ -1,7 +1,8 @@
 <%- include ./partials/header %>
 <div class="container">
   <h1>View <%= dataJsonCustomers[0].first_name %> Cart</h1>
-  <table>
+  <div class="table-responsive">
+    <table class="table" id="customerCart">
     <tr>
       <th>Item Name</th>
       <th>Item QTY</th>
@@ -22,6 +23,7 @@
       <% } %>
     <% } %>
   </table>
+</div>
   <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>">Add More Items</a></button>
   <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>/approveOrders">Approve Orders</a></button>
 </div>

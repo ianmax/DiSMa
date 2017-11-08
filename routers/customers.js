@@ -2,6 +2,7 @@ let express = require('express')
 let router = express.Router()
 let model = require('../models')
 const convertToRupiah = require('../helper/rupiah');
+const sendemail = require('../helper/sendEmail');
 
 // List all customers
 router.get('/', function (req, res) {
@@ -75,6 +76,19 @@ router.get('/delete/:id',function(req,res){
     }
   ).then(function(){
     res.redirect('/customers')
+  })
+})
+
+//Send Email
+router.get('/sendEmail/:id', (req, res)=>{
+  model.Item.findAll(
+    {
+      where: {id: req.params.id}
+    }
+  ).then(function(rowsItems){
+    let itemName = rowsItems[0].item_name
+    sendemail(itemName)
+    res.redirect('/items')
   })
 })
 

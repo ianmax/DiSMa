@@ -3,27 +3,32 @@
   <h3>Purchase Order Page</h3>
   <h5>Welcome, <%= dataJsonCustomers[0].first_name %> !</h5>
   <br>
-  <table>
-    <tr>
-      <th>Item Name</th>
-      <th>Item Price</th>
-      <th>Input Quantity</th>
-    </tr>
-    <% for(let i = 0; i < dataJsonItems.length; i++){ %>
+  <div class="table-responsive">
+    <table class="table" id="po">
       <tr>
-        <td><%= dataJsonItems[i].item_name %></td>
-        <td><%= dataJsonItems[i].item_price %></td>
-        <td>
-          <form class="inputQty" action="/marketplace/customers/<%= dataJsonCustomers[0].id %>/<%= dataJsonItems[i].id %>/addToCart" method="post">
-            <input type="number" name="qtyBuy" value="">
-            <input type="submit" name="submit" value="Add">
-          </form>
-        </td>
+        <th>Item Name</th>
+        <th>In Stock</th>
+        <th>Item Price</th>
+        <th colspan="2">Input Quantity</th>
       </tr>
-    <% } %>
-  </table>
-  <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>/viewCart">View Cart</a></button>
-</div>
-<%- include ./partials/footer %>
+      <% for(let i = 0; i < dataJsonItems.length; i++){ %>
+        <tr>
+          <td><%= dataJsonItems[i].item_name %></td>
+          <td><%= dataJsonItems[i].item_qty %></td>
+          <td><%= dataJsonItems[i].item_price %></td>
+          <td>
+            <form class="inputQty" action="/marketplace/customers/<%= dataJsonCustomers[0].id %>/<%= dataJsonItems[i].id %>/addToCart" method="post">
+              <input type="number" name="qtyBuy" value="" max="<%= dataJsonItems[i].item_qty %>">
+              <input type="submit" name="submit" value="Add">
+            </form>
+          </td>
+          <td><a href="/customers/sendEmail/<%=dataJsonItems[i].id%>">Request More Stock</a></td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+    <button type="button" name="button"><a href="/marketplace/customers/<%= dataJsonCustomers[0].id %>/viewCart">View Cart</a></button>
+  </div>
+  <%- include ./partials/footer %>
 </body>
 </html>

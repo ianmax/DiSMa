@@ -14,8 +14,8 @@ router.get('/customers/:id',function(req,res){
     ).then(function(rowsCustomers){
       res.render('marketplaceItems',
       {
-        dataJsonItems:rowsItems,
-        dataJsonCustomers:rowsCustomers,
+        dataJsonItems: rowsItems,
+        dataJsonCustomers: rowsCustomers,
         pageTitle: 'DiSMa: Purchase Order Page'
       })
     })
