@@ -1,13 +1,16 @@
 <%- include ./partials/header %>
 <div class="container">
+  <br>
+  <br>
   <div class="table-responsive">
-    <table class="table" id="items">
+    <table class="table" id="qt">
     <tr>
       <th>Items ID</th>
       <th>Items QTY</th>
-      <th>Items Name</th>
+      <th>Name</th>
       <th>Items Price</th>
       <th colspan="4">Options</th>
+    </tr>
     <% for(let i = 0; i < dataJsonItems.length; i++){ %>
       <tr>
         <td><%= dataJsonItems[i].id %></td>

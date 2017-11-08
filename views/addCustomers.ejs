@@ -5,13 +5,13 @@
   <% } %>
   <form class="addCustomers" action="/customers/add" method="post">
     Input Customers First Name: <br>
-    <input type="text" name="first_name" value="">
+    <input type="text" name="first_name" value="" required="">
     <br>
     Input Customers Last Name: <br>
-    <input type="text" name="last_name" value="">
+    <input type="text" name="last_name" value="" required="">
     <br>
     Input Customers Email: <br>
-    <input type="text" name="email" value="">
+    <input type="email" name="email" value="" required="">
     <br><br>
     <input type="submit" name="submit" value="submit">
   </form>
