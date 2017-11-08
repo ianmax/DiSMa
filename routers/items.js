@@ -1,11 +1,18 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
-const convertToRupiah = require('../helper/rupiah');
+
+let formatCurrency = require('format-currency')
+let opts = { format: '%s%v', symbol: 'IDR ' }
 
 // List all items
 router.get('/',function(req,res){
   model.Item.findAll().then(function(rows){
+    for(let i = 0; i < rows.length; i++){
+      rows[i].item_selling_price = formatCurrency(rows[i].item_selling_price,opts)
+      rows[i].item_price = formatCurrency(rows[i].item_price,opts)
+    }
+
     res.render('items',{dataJsonItems:rows, pageTitle: 'DiSMa: Items Page'})
   })
 })
@@ -22,6 +29,7 @@ router.post('/add',function(req,res){
       item_qty: req.body.item_qty,
       item_name: req.body.item_name,
       item_price: req.body.item_price,
+      item_selling_price: req.body.item_selling_price,
       createdAt: new Date(),
       updatedAt: new Date()
     }

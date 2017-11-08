@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   var Item = sequelize.define('Item', {
     item_qty: DataTypes.INTEGER,
     item_name: DataTypes.STRING,
-    item_price: DataTypes.INTEGER
+    item_price: DataTypes.INTEGER,
+    item_selling_price: DataTypes.INTEGER
   })
   Item.associate = function(model){
     Item.hasMany(model.Supplier)
