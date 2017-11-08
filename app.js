@@ -12,6 +12,7 @@ let suppliers = require('./routers/suppliers.js')
 let items = require('./routers/items.js')
 let marketplace = require('./routers/marketplace.js')
 let suppliersOrders = require('./routers/suppliersOrders.js')
+let admins = require('./routers/admins.js')
 
 // Router
 app.use('/',index)
@@ -20,6 +21,7 @@ app.use('/suppliers',suppliers)
 app.use('/items',items)
 app.use('/marketplace',marketplace)
 app.use('/suppliersOrders',suppliersOrders)
+app.use('/admins',admins)
 
 // Listening Server
 app.listen(14045,function(){

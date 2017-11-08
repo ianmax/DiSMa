@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>admin panel</h1>
+  <h4>Total Items Sold: <%= dataJsonSumQty %></h4>
+  <h4>Total Revenue Earned: <%= dataJsonSumRevenue %></h4>
+  <h4>Total Profit Earned: <%= dataJsonSumProfit %></h4>
+  <table>
+    <tr>
+      <th>No</th>
+      <th>Customer Name</th>
+      <th>Item Name</th>
+      <th>Total Item Sold</th>
+      <th>Total Selling Price</th>
+      <th>Total Supplied Price</th>
+      <th>Transaction Date</th>
+    </tr>
+    <% for(let i = 0; i < dataJsonCustomersHistories.length; i++){ %>
+      <% for(let y = 0; y < dataJsonSuppliersHistories.length; y++){ %>
+        <% for(let k = 0; k < dataJsonCustomers.length; k++){ %>
+          <% if(dataJsonCustomers[k].id === dataJsonCustomersHistories[i].CustomerId && dataJsonSuppliersHistories[y].ItemId === dataJsonCustomersHistories[i].ItemId){ %>
+            <tr>
+              <td><%= i+1 %></td>
+              <td><%= dataJsonCustomers[k].first_name %></td>
+              <td><%= dataJsonCustomersHistories[i].item_name %></td>
+              <td><%= dataJsonCustomersHistories[i].item_qty_buyed %></td>
+              <td><%= dataJsonCustomersHistories[i].item_price %></td>
+              <td><%= dataJsonSuppliersHistories[y].item_price %></td>
+              <td><%= dataJsonCustomersHistories[i].createdAt %></td>
+            </tr>
+          <% } %>
+        <% } %>
+      <% } %>
+    <% } %>
+  </table>
+
+</body>
+</html>

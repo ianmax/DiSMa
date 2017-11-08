@@ -109,6 +109,7 @@ router.get('/customers/:idCustomers/approveOrders',function(req,res){
               item_qty_buyed: dataCustomersItems[i].qtyBuy,
               item_price: itemPrice,
               CustomerId: req.params.idCustomers,
+              ItemId: itemId,
               createdAt: new Date(),
               updatedAt: new Date()
             }

@@ -77,17 +77,4 @@ router.get('/delete/:id',function(req,res){
   })
 })
 
-// Get "assign item" page
-router.get('/assignItems/:id',function(req,res){
-  model.Supplier.findAll(
-    {
-      where: {id: req.params.id}
-    }
-  ).then(function(rowsSuppliers){
-    model.Item.findAll().then(function(rowsItems){
-      res.render('assignItems',{dataJsonSuppliers:rowsSuppliers,dataJsonItems:rowsItems})
-    })
-  })
-})
-
 module.exports = router
