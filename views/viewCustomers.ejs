@@ -1,7 +1,8 @@
 <%- include ./partials/header %>
 <div class="container">
   <h1>Customers For: <%= dataJsonItems[0].item_name %></h1>
-  <table>
+  <div class="table-responsive">
+    <table class="table" id="customerItem">
       <tr>
         <th>Customer Name</th>
         <th>Item QTY Bought</th>
@@ -19,6 +20,7 @@
       <% } %>
     <% } %>
   </table>
+</div>
 </div>
 <%- include ./partials/footer %>
 </body>

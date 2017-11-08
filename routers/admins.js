@@ -109,7 +109,8 @@ router.get('/',function(req,res){
       dataJsonSuppliersHistories: arrSumSuppliersPrice,
       dataJsonSumRevenue: countRevenue,
       dataJsonSumProfit: countProfit,
-      dataJsonSumQty: countQty
+      dataJsonSumQty: countQty,
+      pageTitle: 'DiSMa: Admin Panel'
     })
   })
 })
