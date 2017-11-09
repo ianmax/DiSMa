@@ -1,6 +1,10 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+const convertToRupiah = require('../helper/rupiah');
+const sendemail = require('../helper/sendEmail');
+let formatCurrency = require('format-currency');
+let opts = { format: '%s%v', symbol: 'IDR ' };
 
 // Login validation
 router.use(function(req,res,next){
@@ -13,15 +17,15 @@ router.use(function(req,res,next){
 })
 
 // List all customers
-router.get('/',function(req,res){
-  model.Customer.findAll().then(function(rows){
-    res.render('customers',{dataJsonCustomers:rows})
-  })
-})
+router.get('/', function (req, res) {
+  model.Customer.findAll().then(function (rows) {
+    res.render('customers', { dataJsonCustomers: rows, pageTitle: 'DiSMa: Customer Page' });
+  });
+});
 
 // Get "add customers" page
 router.get('/add',function(req,res){
-  res.render('addCustomers')
+  res.render('addCustomers', { pageTitle: 'DiSMa: Add Customer' })
 })
 
 // Post added customers
@@ -48,7 +52,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editCustomers',{dataJsonCustomers:rows})
+    res.render('editCustomers',{dataJsonCustomers:rows, pageTitle: 'DiSMa: Edit Customer'})
   })
 })
 
@@ -84,6 +88,19 @@ router.get('/delete/:id',function(req,res){
     }
   ).then(function(){
     res.redirect('/customers')
+  })
+})
+
+//Send Email
+router.get('/sendEmail/:id', (req, res)=>{
+  model.Item.findAll(
+    {
+      where: {id: req.params.id}
+    }
+  ).then(function(rowsItems){
+    let itemName = rowsItems[0].item_name
+    sendemail(itemName)
+    res.redirect('/items')
   })
 })
 

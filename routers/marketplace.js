@@ -24,8 +24,9 @@ router.get('/customers/:id',function(req,res){
     ).then(function(rowsCustomers){
       res.render('marketplaceItems',
       {
-        dataJsonItems:rowsItems,
-        dataJsonCustomers:rowsCustomers
+        dataJsonItems: rowsItems,
+        dataJsonCustomers: rowsCustomers,
+        pageTitle: 'DiSMa: Purchase Order Page'
       })
     })
   })
@@ -74,7 +75,8 @@ router.get('/customers/:idCustomers/viewCart',function(req,res){
         {
           dataJsonCustomersItems:rowsCustomersItems,
           dataJsonCustomers:rowsCustomers,
-          dataJsonItems:rowsItems
+          dataJsonItems:rowsItems,
+          pageTitle: 'DiSMa: viewCart Page'
         })
       })
     })

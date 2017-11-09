@@ -1,6 +1,6 @@
-let express = require('express')
-let app = express()
-let bodyParser = require('body-parser')
+let express = require('express');
+let app = express();
+let bodyParser = require('body-parser');
 
 // Express session
 let session = require('express-session')
@@ -34,7 +34,10 @@ app.use('/admins',admins)
 app.use('/login',login)
 app.use('/logout',logout)
 
+
 // Listening Server
+
 app.listen(14045,function(){
   console.log(`Calling 14045 --> Dengan Hotline KFC, mau pesan paha apa dada?`);
 })
+

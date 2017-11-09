@@ -2,9 +2,9 @@ let express = require('express')
 let router = express.Router()
 let model = require('../models')
 
-router.get('/',function(req,res){
-  res.render('index')
-})
+router.get('/', function (req, res) {
+  res.render('index', { pageTitle: 'DiSMa: HOME' });
+});
 
 // Get "register customer" page
 router.get('/registerCustomers',function(req,res){

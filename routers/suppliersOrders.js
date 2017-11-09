@@ -25,7 +25,8 @@ router.get('/suppliers/:id',function(req,res){
       res.render('suppliersOrders',
       {
         dataJsonItems:rowsItems,
-        dataJsonSuppliers:rowsSuppliers
+        dataJsonSuppliers:rowsSuppliers,
+        pageTitle: 'DiSMa: Supplier Order'
       })
     })
   })
@@ -74,7 +75,8 @@ router.get('/suppliers/:idSuppliers/viewOrders',function(req,res){
         {
           dataJsonSuppliersItems:rowsSuppliersItems,
           dataJsonSuppliers:rowsSuppliers,
-          dataJsonItems:rowsItems
+          dataJsonItems:rowsItems,
+          pageTitle: 'DiSMa: viewOrder Page'
         })
       })
     })
