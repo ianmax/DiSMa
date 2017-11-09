@@ -3,17 +3,19 @@
   <h3>Supplier Order Page</h3>
   <h5>Welcome, <%= dataJsonSuppliers[0].first_name %> !</h5>
   <br>
-  <table>
+  <table class="table">
     <tr>
       <th>Item Name</th>
-      <th>Item Price and Quantity</th>
+      <th>Item Price</th>
+      <th>Item Quantity</th>
     </tr>
     <% for(let i = 0; i < dataJsonItems.length; i++){ %>
       <tr>
         <td><%= dataJsonItems[i].item_name %></td>
+        <td><%= dataJsonItems[i].item_selling_price %></td>
         <td>
           <form class="inputAttributes" action="/suppliersOrders/suppliers/<%= dataJsonSuppliers[0].id %>/<%= dataJsonItems[i].id %>/addToOrder" method="post">
-          <input type="number" name="item_price" value="<%= dataJsonItems[i].item_selling_price %>" readonly="readonly">
+          <input type="hidden" name="item_price" value="<%= dataJsonItems[i].item_selling_price %>" readonly="readonly">
           <input type="number" name="qtySupply" value="">
           <input type="submit" name="submit" value="Supply">
         </form>
