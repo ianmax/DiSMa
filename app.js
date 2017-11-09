@@ -39,6 +39,4 @@ app.use('/logout',logout)
 
 // Listening Server
 
-app.listen(14045,function(){
-  console.log(`Calling 14045 --> Dengan Hotline KFC, mau pesan paha apa dada?`);
-})
+app.listen(process.env.PORT || '3000')
