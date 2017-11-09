@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
+app.use(express.static('public'));
 
 // Express session
 let session = require('express-session')
@@ -38,4 +39,3 @@ app.use('/login',login)
 app.listen(14045,function(){
   console.log(`Calling 14045 --> Dengan Hotline KFC, mau pesan paha apa dada?`);
 })
-

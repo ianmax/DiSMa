@@ -1,4 +1,5 @@
-function sendEmail(itemName) {
+function sendEmail(itemName, supplierEmail, cb) {
+  console.log(supplierEmail);
   const nodemailer = require('nodemailer');
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -13,7 +14,7 @@ function sendEmail(itemName) {
 
   let mailOptions = {
     from: 'testemaiajah@gmail.com',
-    to: 'albiardtya@gmail.com, christiantobs@gmail.com',
+    to: `${supplierEmail}, christiantobs@gmail.com`,
     subject: 'Request Stock',
     text: `ada permintaan penambahan stock ${itemName}`
   };
@@ -21,7 +22,7 @@ function sendEmail(itemName) {
     if (error) {
       return console.log('Waduh', error.message);
     }
-    console.log('Message Sent!');
+    cb('Request Sent!');
 
   });
 }
