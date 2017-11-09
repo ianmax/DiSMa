@@ -3,7 +3,7 @@ let router = express.Router()
 let model = require('../models')
 let getMatch = require('../helper/getMatch')
 
-
+// Get "login page"
 router.get('/',function(req,res){
   res.render('login')
 })
