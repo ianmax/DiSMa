@@ -28,7 +28,7 @@ router.post('/',function(req,res){
         res.redirect(`/marketplace/customers/${rowsUsers[0].CustomerId}`)
       }
       else if(req.session.role === 'supplier'){
-        res.redirect(`/marketplace/suppliers/${rowsUsers[0].SupplierId}`)
+        res.redirect(`/suppliersOrders/suppliers/${rowsUsers[0].SupplierId}`)
       }
     }
     else{
