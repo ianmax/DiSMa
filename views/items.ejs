@@ -1,35 +1,40 @@
 <%- include ./partials/header %>
 <div class="container">
-  <br>
-  <br>
-  <div class="table-responsive">
-    <table class="table" id="qt">
-    <tr>
-      <th>Items ID</th>
-      <th>Items QTY</th>
-      <th>Name</th>
-      <th>Items Price</th>
-      <th>Items Buying Price</th>
-      <th colspan="4">Options</th>
-    </tr>
-    <% for(let i = 0; i < dataJsonItems.length; i++){ %>
-      <tr>
-        <td><%= dataJsonItems[i].id %></td>
-        <td><%= dataJsonItems[i].item_qty %></td>
-        <td><%= dataJsonItems[i].item_name %></td>
-        <td><%= dataJsonItems[i].item_price %></td>
-        <td><%= dataJsonItems[i].item_selling_price %></td>
-        <td><a href="/items/viewSuppliers/<%= dataJsonItems[i].id %>">View Suppliers</a></td>
-        <td><a href="/items/viewCustomers/<%= dataJsonItems[i].id %>">View Customers</a></td>
-        <td><a href="/items/edit/<%= dataJsonItems[i].id %>">Edit</a></td>
-        <td><a href="/items/delete/<%= dataJsonItems[i].id %>">Delete</a></td>
-      </tr>
-    <% } %>
-  </table>
-</div>
-  <br><br>
-  <button type="button" name="button"><a href="/items/add">Add New Items</a></button>
-</div>
-<%- include ./partials/footer %>
+  <div data-role="main" class="ui-content">
+    <form>
+      <input id="item" data-type="search" placeholder="Search For Item...">
+    </form>
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="item" data-filter="true" data-input="#item">
+      <thead>
+        <tr>
+          <th data-priority="3">Items ID</th>
+          <th data-priority="2">Items QTY</th>
+          <th>Name</th>
+          <th data-priority="1">Items Price</th>
+          <th data-priority="4">Items Buying Price</th>
+          <th colspan="4">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < dataJsonItems.length; i++){ %>
+          <tr>
+            <td><%= dataJsonItems[i].id %></td>
+            <td><%= dataJsonItems[i].item_qty %></td>
+            <td><%= dataJsonItems[i].item_name %></td>
+            <td><%= dataJsonItems[i].item_price %></td>
+            <td><%= dataJsonItems[i].item_selling_price %></td>
+            <td><a href="/items/viewSuppliers/<%= dataJsonItems[i].id %>">View Suppliers</a></td>
+            <td><a href="/items/viewCustomers/<%= dataJsonItems[i].id %>">View Customers</a></td>
+            <td><a href="/items/edit/<%= dataJsonItems[i].id %>">Edit</a></td>
+            <td><a href="/items/delete/<%= dataJsonItems[i].id %>">Delete</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+    <button type="button" name="button"><a href="/items/add">Add New Items</a></button>
+  </div>
+  <%- include ./partials/footer %>
 </body>
 </html>

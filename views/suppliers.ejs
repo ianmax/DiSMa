@@ -1,29 +1,36 @@
 <%- include ./partials/header %>
 <div class="container">
-  <div class="table-responsive">
-    <table class="table" id="supplier">
-    <tr>
-      <th>ID</th>
-      <th>Supplier First Name</th>
-      <th>Supplier Last Name</th>
-      <th>Supplier Email</th>
-      <th colspan="3">Options</th>
-    </tr>
-    <% for(let i = 0; i < dataJsonSuppliers.length; i++){ %>
-      <tr>
-        <td><%= dataJsonSuppliers[i].id %></td>
-        <td><%= dataJsonSuppliers[i].first_name %></td>
-        <td><%= dataJsonSuppliers[i].last_name %></td>
-        <td><%= dataJsonSuppliers[i].email %></td>
-        <td><a href="/suppliers/edit/<%= dataJsonSuppliers[i].id %>">Edit</a></td>
-        <td><a href="/suppliers/delete/<%= dataJsonSuppliers[i].id %>">Delete</a></td>
-        <td><a href="/suppliersOrders/suppliers/<%= dataJsonSuppliers[i].id %>/viewOrders">View Orders</a></td>
-      </tr>
-    <% } %>
-  </table>
-</div>
-  <button type="button" name="button"><a href="/suppliers/add">Add New Supplier</a></button>
-</div>
+  <div data-role="main" class="ui-content">
+    <form>
+      <input id="filterTable-input" data-type="search" placeholder="Search For Supplier...">
+    </form>
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="supplier" data-filter="true" data-input="#filterTable-input">
+      <thead>
+        <tr>
+          <th data-priority="3">ID</th>
+          <th>Supplier First Name</th>
+          <th data-priority="1">Supplier Last Name</th>
+          <th data-priority="2">Supplier Email</th>
+          <th colspan="3">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < dataJsonSuppliers.length; i++){ %>
+          <tr>
+            <td><%= dataJsonSuppliers[i].id %></td>
+            <td><%= dataJsonSuppliers[i].first_name %></td>
+            <td><%= dataJsonSuppliers[i].last_name %></td>
+            <td><%= dataJsonSuppliers[i].email %></td>
+            <td><a href="/suppliers/edit/<%= dataJsonSuppliers[i].id %>">Edit</a></td>
+            <td><a href="/suppliers/delete/<%= dataJsonSuppliers[i].id %>">Delete</a></td>
+            <td><a href="/suppliersOrders/suppliers/<%= dataJsonSuppliers[i].id %>/viewOrders">View Orders</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" name="button"><a href="/suppliers/add">Add New Supplier</a></button>
+  </div>
   <%- include ./partials/footer %>
 </body>
 </html>
