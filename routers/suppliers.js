@@ -2,6 +2,16 @@ let express = require('express')
 let router = express.Router()
 let model = require('../models')
 
+// Login validation
+router.use(function(req,res,next){
+  if(req.session.role === 'admin'){
+    next()
+  }
+  else{
+    res.render('login',{session:req.session.username,errMsg:''})
+  }
+})
+
 // List all suppliers
 router.get('/',function(req,res){
   model.Supplier.findAll().then(function(rows){
