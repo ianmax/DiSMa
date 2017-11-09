@@ -4,6 +4,7 @@
   "description": "many-to-many: banyak item punya banyak pembeli banyak item punya banyak suppliers",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
