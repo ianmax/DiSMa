@@ -7,37 +7,37 @@
     <% } else {%>
       <h4>Please</h4>
       <% } %>
-      <form class="checkDate" action="/admins" method="get" style="width:200px">
-        Start Date:
+      <form action="/admins" method="get">
+        <label for="">Start Date:</label>
         <select class="day" name="day">
           <% for(let i = 1; i < 32; i++){%>
             <option value="<%= i %>"><%= i %></option>
             <%}%>
           </select>
-          <select class="month" name="month">
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">February</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-          </select>
-          <select class="year" name="year">
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-          </select>
-          End Date:
-          <select class="day" name="dayEnd">
-            <% for(let i = 1; i < 32; i++){%>
-              <option value="<%= i %>"><%= i %></option>
-              <%}%>
-            </select>
+        <select class="month" name="month">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">February</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <select class="year" name="year">
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+        </select>
+            <label for="">End Date:</label>
+            <select class="day" name="dayEnd">
+              <% for(let i = 1; i < 32; i++){%>
+                <option value="<%= i %>"><%= i %></option>
+                <%}%>
+              </select>
             <select class="month" name="monthEnd">
               <option value="January">January</option>
               <option value="February">February</option>
@@ -56,8 +56,8 @@
               <option value="2016">2016</option>
               <option value="2017">2017</option>
             </select>
-            <input type="submit" name="submit" value="submit">
-          </form>
+          <input type="submit" name="submit" value="submit">
+        </form>
           <h4>Total Items Sold: <%= dataJsonSumQty %></h4>
           <h4>Total Revenue Earned: <%= dataJsonSumRevenue %></h4>
           <h4>Total Profit Earned: <%= dataJsonSumProfit %></h4>

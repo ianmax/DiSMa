@@ -78,7 +78,7 @@ router.post('/edit/:id',function(req,res){
 
 // Delete suppliers by id
 router.get('/delete/:id',function(req,res){
-  mode.Supplier.destroy(
+  model.Supplier.destroy(
     {
       where: {id: req.params.id}
     }
