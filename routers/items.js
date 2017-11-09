@@ -23,13 +23,13 @@ router.get('/',function(req,res){
       rows[i].item_price = formatCurrency(rows[i].item_price,opts)
     }
 
-    res.render('items',{dataJsonItems:rows, pageTitle: 'DiSMa: Items Page'})
+    res.render('items',{dataJsonItems:rows, pageTitle: 'DiSMa: Items Page',session: req.session})
   })
 })
 
 // Get "add items" page
 router.get('/add',function(req,res){
-  res.render('addItems', {pageTitle: 'DiSMa: Add Item'})
+  res.render('addItems', {pageTitle: 'DiSMa: Add Item',session: req.session})
 })
 
 // Post added items
@@ -55,7 +55,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editItems',{dataJsonItems:rows, pageTitle: 'DiSMa: Edit Item'})
+    res.render('editItems',{dataJsonItems:rows, pageTitle: 'DiSMa: Edit Item',session: req.session})
   })
 })
 
@@ -105,7 +105,8 @@ router.get('/viewSuppliers/:idItems',function(req,res){
           dataJsonItems: rowsItems,
           dataJsonSuppliersHistories: rowsSuppliersHistories,
           dataJsonSuppliers: rowsSuppliers,
-          pageTitle: 'DiSMa: View Supplier'
+          pageTitle: 'DiSMa: View Supplier',
+          session: req.session
         })
       })
     })
@@ -130,7 +131,8 @@ router.get('/viewCustomers/:idItems',function(req,res){
           dataJsonItems: rowsItems,
           dataJsonCustomersHistories: rowsCustomersHistories,
           dataJsonCustomers: rowsCustomers,
-          pageTitle: 'DiSMa: View Customer'
+          pageTitle: 'DiSMa: View Customer',
+          session: req.session
         })
       })
     })

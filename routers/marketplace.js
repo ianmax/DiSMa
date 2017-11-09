@@ -26,7 +26,8 @@ router.get('/customers/:id',function(req,res){
       {
         dataJsonItems: rowsItems,
         dataJsonCustomers: rowsCustomers,
-        pageTitle: 'DiSMa: Purchase Order Page'
+        pageTitle: 'DiSMa: Purchase Order Page',
+        session: req.session
       })
     })
   })
@@ -76,7 +77,8 @@ router.get('/customers/:idCustomers/viewCart',function(req,res){
           dataJsonCustomersItems:rowsCustomersItems,
           dataJsonCustomers:rowsCustomers,
           dataJsonItems:rowsItems,
-          pageTitle: 'DiSMa: viewCart Page'
+          pageTitle: 'DiSMa: viewCart Page',
+          session: req.session
         })
       })
     })

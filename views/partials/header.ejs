@@ -30,6 +30,8 @@ tr:nth-child(even) {
         </div>
         <ul class="nav navbar-nav">
           <li><a href="/">HOME</a></li>
+          <% if(hasOwnProperty('session')){ %>
+          <% if(session.role === 'admin'){ %>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">CUSTOMER <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/customers">CUSTOMER</a></li>
@@ -49,7 +51,13 @@ tr:nth-child(even) {
             </ul>
           </li>
           <li><a href="/admins">ADMIN PANEL</a></li>
+          <% } %>
+          <% } %>
+          <% if(hasOwnProperty('session')){ %>
           <li><a href="/logout">LOG OUT</a></li>
+          <% } else {%>
+            <li><a href="/login">LOG IN</a></li>
+          <% } %>
         </ul>
       </div>
     </nav>

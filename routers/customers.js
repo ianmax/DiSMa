@@ -19,13 +19,13 @@ router.use(function(req,res,next){
 // List all customers
 router.get('/', function (req, res) {
   model.Customer.findAll().then(function (rows) {
-    res.render('customers', { dataJsonCustomers: rows, pageTitle: 'DiSMa: Customer Page' });
+    res.render('customers', { dataJsonCustomers: rows, pageTitle: 'DiSMa: Customer Page', session: req.session });
   });
 });
 
 // Get "add customers" page
 router.get('/add',function(req,res){
-  res.render('addCustomers', { pageTitle: 'DiSMa: Add Customer' })
+  res.render('addCustomers', { pageTitle: 'DiSMa: Add Customer',session: req.session })
 })
 
 // Post added customers
@@ -41,7 +41,7 @@ router.post('/add',function(req,res){
   ).then(function(){
     res.redirect('/customers')
   }).catch(function(err){
-    res.render('addCustomers',{error:err})
+    res.render('addCustomers',{error:err,session: req.session})
   })
 })
 
@@ -52,7 +52,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editCustomers',{dataJsonCustomers:rows, pageTitle: 'DiSMa: Edit Customer'})
+    res.render('editCustomers',{dataJsonCustomers:rows, pageTitle: 'DiSMa: Edit Customer',session: req.session})
   })
 })
 
@@ -75,7 +75,7 @@ router.post('/edit/:id',function(req,res){
         where: {id: req.params.id}
       }
     ).then(function(rows){
-      res.render('editCustomers',{error:err,dataJsonCustomers:rows})
+      res.render('editCustomers',{error:err,dataJsonCustomers:rows,session: req.session})
     })
   })
 })
@@ -111,7 +111,8 @@ router.get('/sendEmail/:id', (req, res)=>{
             log: log,
             dataJsonItems: rowsItems,
             dataJsonCustomers: rowsCustomers,
-            pageTitle: 'DiSMa: Purchase Order Page'
+            pageTitle: 'DiSMa: Purchase Order Page',
+            session: req.session
           })
         })
       })

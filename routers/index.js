@@ -8,17 +8,17 @@ router.get('/', function (req, res) {
 
 // Get "register customer" page
 router.get('/registerCustomers',function(req,res){
-  res.render('registerCustomers')
+  res.render('registerCustomers',{session: req.session})
 })
 
 // Get "register supplier" page
 router.get('/registerSuppliers',function(req,res){
-  res.render('registerSuppliers')
+  res.render('registerSuppliers',{session: req.session})
 })
 
 // Get "register admin" page
 router.get('/registerAdmins',function(req,res){
-  res.render('registerAdmins')
+  res.render('registerAdmins',{session: req.session})
 })
 
 // Register Customer
