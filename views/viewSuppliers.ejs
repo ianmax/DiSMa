@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+<%- include ./partials/header %>
+<div class="container">
   <h1>Suppliers For: <%= dataJsonItems[0].item_name %></h1>
-  <table>
+  <div class="table-responsive">
+    <table class="table" id="supplierItem">
       <tr>
         <th>Supplier Name</th>
         <th>Item QTY Supplied</th>
@@ -26,5 +20,8 @@
       <% } %>
     <% } %>
   </table>
+</div>
+</div>
+<%- include ./partials/footer %>
 </body>
 </html>

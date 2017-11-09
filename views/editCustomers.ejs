@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Edit Customers Page</h1>
+<%- include ./partials/header %>
+<div class="container">
   <% if(hasOwnProperty('error')){ %>
     <h4 style="color: red">Please Input The Correct Email Format!</h4>
   <% } %>
@@ -19,9 +11,11 @@
     <input type="text" name="last_name" value="<%= dataJsonCustomers[0].last_name %>">
     <br>
     Input Customers Email: <br>
-    <input type="text" name="email" value="<%= dataJsonCustomers[0].email %>">
+    <input type="email" name="email" value="<%= dataJsonCustomers[0].email %>">
     <br><br>
     <input type="submit" name="submit" value="Submit">
   </form>
+</div>
+<%- include ./partials/footer %>
 </body>
 </html>

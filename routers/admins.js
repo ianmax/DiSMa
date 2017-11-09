@@ -1,6 +1,7 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+
 let formatCurrency = require('format-currency')
 let opts = { format: '%s%v', symbol: 'IDR ' }
 
@@ -16,6 +17,7 @@ router.use(function(req,res,next){
 
 // Get "admin dashboard" page
 router.get('/',function(req,res){
+
   model.Customer_history.findAll(
     {
       include: [model.Supplier,model.Customer]
@@ -60,7 +62,8 @@ router.get('/',function(req,res){
       dataJsonSumRevenue: countRevenue,
       dataJsonSumProfit: countProfit,
       dataJsonSumQty: countQty,
-      dataJsonQuerry: req.query
+      dataJsonQuerry: req.query,
+      pageTitle: 'DiSMa: Admin Panel'
     })
   })
 })

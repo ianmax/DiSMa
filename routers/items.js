@@ -1,6 +1,7 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+
 let formatCurrency = require('format-currency')
 let opts = { format: '%s%v', symbol: 'IDR ' }
 
@@ -21,13 +22,14 @@ router.get('/',function(req,res){
       rows[i].item_selling_price = formatCurrency(rows[i].item_selling_price,opts)
       rows[i].item_price = formatCurrency(rows[i].item_price,opts)
     }
-    res.render('items',{dataJsonItems:rows})
+
+    res.render('items',{dataJsonItems:rows, pageTitle: 'DiSMa: Items Page'})
   })
 })
 
 // Get "add items" page
 router.get('/add',function(req,res){
-  res.render('addItems')
+  res.render('addItems', {pageTitle: 'DiSMa: Add Item'})
 })
 
 // Post added items
@@ -53,7 +55,7 @@ router.get('/edit/:id',function(req,res){
       where: {id: req.params.id}
     }
   ).then(function(rows){
-    res.render('editItems',{dataJsonItems:rows})
+    res.render('editItems',{dataJsonItems:rows, pageTitle: 'DiSMa: Edit Item'})
   })
 })
 
@@ -63,7 +65,8 @@ router.post('/edit/:id',function(req,res){
     {
       item_qty: req.body.item_qty,
       item_name: req.body.item_name,
-      item_price: req.body.item_price
+      item_price: req.body.item_price,
+      item_selling_price: req.body.item_selling_price
     },
     {
       where: {id: req.params.id}
@@ -102,6 +105,7 @@ router.get('/viewSuppliers/:idItems',function(req,res){
           dataJsonItems: rowsItems,
           dataJsonSuppliersHistories: rowsSuppliersHistories,
           dataJsonSuppliers: rowsSuppliers,
+          pageTitle: 'DiSMa: View Supplier'
         })
       })
     })
@@ -126,6 +130,7 @@ router.get('/viewCustomers/:idItems',function(req,res){
           dataJsonItems: rowsItems,
           dataJsonCustomersHistories: rowsCustomersHistories,
           dataJsonCustomers: rowsCustomers,
+          pageTitle: 'DiSMa: View Customer'
         })
       })
     })
