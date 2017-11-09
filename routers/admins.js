@@ -1,6 +1,7 @@
 let express = require('express')
 let router = express.Router()
 let model = require('../models')
+const sendemail = require('../helper/sendEmail');
 
 let formatCurrency = require('format-currency')
 let opts = { format: '%s%v', symbol: 'IDR ' }
@@ -65,6 +66,26 @@ router.get('/',function(req,res){
       dataJsonQuerry: req.query,
       pageTitle: 'DiSMa: Admin Panel',
       session: req.session
+    })
+  })
+})
+
+// Send request stock
+router.get('/sendEmail/:idItem', (req, res)=>{
+  model.Supplier_history.findAll(
+    {
+      include: [model.Item,model.Supplier],
+      where: {ItemId: req.params.idItem}
+    }
+  ).then(function(rowsSupplierHistories){
+    sendemail(rowsSupplierHistories[0].Item.item_name,rowsSupplierHistories[0].Supplier.email, (log) =>{
+      model.Item.findAll().then(function(rows){
+        for(let i = 0; i < rows.length; i++){
+          rows[i].item_selling_price = formatCurrency(rows[i].item_selling_price,opts)
+          rows[i].item_price = formatCurrency(rows[i].item_price,opts)
+        }
+        res.render('items',{dataJsonItems:rows, pageTitle: 'DiSMa: Items Page',session: req.session,log:log})
+      })
     })
   })
 })

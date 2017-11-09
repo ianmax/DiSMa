@@ -21,16 +21,12 @@
             <td class='name'><%= dataJsonCustomers[i].first_name %></td>
             <td><%= dataJsonCustomers[i].last_name %></td>
             <td><%= dataJsonCustomers[i].email %></td>
-            <td><a href="/customers/edit/<%= dataJsonCustomers[i].id %>">Edit</a></td>
             <td><a href="/customers/delete/<%= dataJsonCustomers[i].id %>">Delete</a></td>
             <td><a href="/marketplace/customers/<%= dataJsonCustomers[i].id %>/viewCart">View Cart</a></td>
           </tr>
           <% } %>
         </tbody>
       </table>
-    </div>
-    <button type="button" name="button"><a href="/customers/add">Add New Customer</a></button>
-  </div>
   <%- include ./partials/footer %>
 </body>
 </html>

@@ -1,4 +1,9 @@
 <%- include ./partials/header %>
+<% if(hasOwnProperty('log')){ %>
+  <div class="alert alert-success">
+    <%= log %>
+  </div>
+<% } %>
 <div class="container">
   <div data-role="main" class="ui-content">
     <form>
@@ -17,7 +22,8 @@
       </thead>
       <tbody>
         <% for(let i = 0; i < dataJsonItems.length; i++){ %>
-          <tr>
+          <% if(dataJsonItems[i].item_qty < 50){ %>
+          <tr style="background-color: red">
             <td><%= dataJsonItems[i].id %></td>
             <td><%= dataJsonItems[i].item_qty %></td>
             <td><%= dataJsonItems[i].item_name %></td>
@@ -26,8 +32,21 @@
             <td><a href="/items/viewSuppliers/<%= dataJsonItems[i].id %>">View Suppliers</a></td>
             <td><a href="/items/viewCustomers/<%= dataJsonItems[i].id %>">View Customers</a></td>
             <td><a href="/items/edit/<%= dataJsonItems[i].id %>">Edit</a></td>
-            <td><a href="/items/delete/<%= dataJsonItems[i].id %>">Delete</a></td>
+            <td><a href="/admins/sendEmail/<%= dataJsonItems[i].id %>">Request Supplier</a></td>
           </tr>
+          <% } else { %>
+            <tr>
+              <td><%= dataJsonItems[i].id %></td>
+              <td><%= dataJsonItems[i].item_qty %></td>
+              <td><%= dataJsonItems[i].item_name %></td>
+              <td><%= dataJsonItems[i].item_price %></td>
+              <td><%= dataJsonItems[i].item_selling_price %></td>
+              <td><a href="/items/viewSuppliers/<%= dataJsonItems[i].id %>">View Suppliers</a></td>
+              <td><a href="/items/viewCustomers/<%= dataJsonItems[i].id %>">View Customers</a></td>
+              <td><a href="/items/edit/<%= dataJsonItems[i].id %>">Edit</a></td>
+              <td><a href="/items/delete/<%= dataJsonItems[i].id %>">Delete</a></td>
+            </tr>
+            <% } %>
           <% } %>
         </tbody>
       </table>
