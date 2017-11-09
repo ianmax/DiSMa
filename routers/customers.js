@@ -3,6 +3,8 @@ let router = express.Router()
 let model = require('../models')
 const convertToRupiah = require('../helper/rupiah');
 const sendemail = require('../helper/sendEmail');
+let formatCurrency = require('format-currency');
+let opts = { format: '%s%v', symbol: 'IDR ' };
 
 // List all customers
 router.get('/', function (req, res) {
