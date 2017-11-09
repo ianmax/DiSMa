@@ -93,15 +93,46 @@ router.get('/delete/:id',function(req,res){
 
 //Send Email
 router.get('/sendEmail/:id', (req, res)=>{
-  model.Item.findAll(
+  model.Supplier_history.findAll(
     {
-      where: {id: req.params.id}
+      include: [model.Item,model.Supplier],
+      where: {ItemId: req.params.id}
     }
-  ).then(function(rowsItems){
-    let itemName = rowsItems[0].item_name
-    sendemail(itemName)
-    res.redirect('/items')
+  ).then(function(rowsSupplierHistories){
+    // console.log(rowsSupplierHistories[0].Item.item_name,rowsSupplierHistories[0].Supplier.email)
+    sendemail(rowsSupplierHistories[0].Item.item_name,rowsSupplierHistories[0].Supplier.email, (log) =>{
+      model.Item.findAll().then(function(rowsItems){
+        model.Customer.findAll(
+          {
+            where: {id: req.params.id}
+          }
+        ).then(function(rowsCustomers){
+          res.render('marketplaceItems',
+          {
+            log: log,
+            dataJsonItems: rowsItems,
+            dataJsonCustomers: rowsCustomers,
+            pageTitle: 'DiSMa: Purchase Order Page'
+          })
+        })
+      })
+    })
   })
+  // model.Item.findAll(
+  //   {
+  //     where: {id: req.params.id}
+  //   }
+  // ).then(function(rowsItems){
+  //   model.Supplier.findAll().then(function(alamat){
+  //     console.log(alamat[0].email);
+  //     for(let i = 0; i < alamat.length; i++){
+  //
+  //     }
+  //   })
+  //   let itemName = rowsItems[0].item_name
+  //   // sendemail(itemName)
+  //   // res.redirect('/items')
+  // })
 })
 
 module.exports = router

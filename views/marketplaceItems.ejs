@@ -1,4 +1,9 @@
 <%- include ./partials/header %>
+<% if(hasOwnProperty('log')){ %>
+  <div class="alert alert-success">
+    <%= log %>
+  </div>
+<% } %>
 <div class="container">
   <h3>Purchase Order Page</h3>
   <h5>Welcome, <%= dataJsonCustomers[0].first_name %> !</h5>
