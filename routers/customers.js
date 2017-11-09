@@ -8,7 +8,7 @@ let opts = { format: '%s%v', symbol: 'IDR ' };
 
 // Login validation
 router.use(function(req,res,next){
-  if(req.session.role === 'admin'){
+  if(req.session.role === 'admin' || req.session.role === 'customer'){
     next()
   }
   else{
@@ -92,18 +92,18 @@ router.get('/delete/:id',function(req,res){
 })
 
 //Send Email
-router.get('/sendEmail/:id', (req, res)=>{
+router.get('/sendEmail/:idItem/:idCustomer', (req, res)=>{
   model.Supplier_history.findAll(
     {
       include: [model.Item,model.Supplier],
-      where: {ItemId: req.params.id}
+      where: {ItemId: req.params.idItem}
     }
   ).then(function(rowsSupplierHistories){
     sendemail(rowsSupplierHistories[0].Item.item_name,rowsSupplierHistories[0].Supplier.email, (log) =>{
       model.Item.findAll().then(function(rowsItems){
         model.Customer.findAll(
           {
-            where: {id: req.params.id}
+            where: {id: req.params.idCustomer}
           }
         ).then(function(rowsCustomers){
           res.render('marketplaceItems',

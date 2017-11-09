@@ -27,7 +27,7 @@
               <input type="submit" name="submit" value="Add">
             </form>
           </td>
-          <td><a href="/customers/sendEmail/<%=dataJsonItems[i].id%>">Request More Stock</a></td>
+          <td><a href="/customers/sendEmail/<%=dataJsonItems[i].id%>/<%= dataJsonCustomers[0].id %>">Request More Stock</a></td>
         </tr>
         <% } %>
       </table>
