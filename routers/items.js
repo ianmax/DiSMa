@@ -4,6 +4,16 @@ let model = require('../models')
 let formatCurrency = require('format-currency')
 let opts = { format: '%s%v', symbol: 'IDR ' }
 
+// Login validation
+router.use(function(req,res,next){
+  if(req.session.role === 'admin'){
+    next()
+  }
+  else{
+    res.render('login',{session:req.session.username,errMsg:''})
+  }
+})
+
 // List all items
 router.get('/',function(req,res){
   model.Item.findAll().then(function(rows){

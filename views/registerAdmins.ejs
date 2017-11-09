@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>register admin page</h1>
+  <form class="register" action="/registerAdmins" method="post">
+    <label>Input Username</label>
+    <input type="text" name="username" value="">
+    <label>Input Password</label>
+    <input type="password" name="password" value="">
+    <label>Input Role</label>
+    <select class="role" name="role">
+      <option value="admin">Admin</option>
+    </select>
+    <input type="submit" name="submit" value="submit">
+  </form>
+</body>
+</html>

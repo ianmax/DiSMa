@@ -4,6 +4,16 @@ let model = require('../models')
 let formatCurrency = require('format-currency')
 let opts = { format: '%s%v', symbol: 'IDR ' }
 
+// Login validation
+router.use('/suppliers/:id',function(req,res,next){
+  if(req.session.role === 'admin' || req.session.role === 'supplier' && req.session.SupplierId === parseInt(req.params.id)){
+    next()
+  }
+  else{
+    res.render('login',{session:req.session.username,errMsg:''})
+  }
+})
+
 // Get marketplace main page - suppliers
 router.get('/suppliers/:id',function(req,res){
   model.Item.findAll().then(function(rowsItems){
