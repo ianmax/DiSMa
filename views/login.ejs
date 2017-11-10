@@ -22,6 +22,11 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
+  <% if(hasOwnProperty('errMsg')){%>
+      <div class="alert alert-danger">
+        <h4>Please insert correct username and password</h4>
+      </div>
+    <% } %>
   <div class="container">
 	<div class="row">
         <div class="span12">
