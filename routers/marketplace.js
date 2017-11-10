@@ -17,6 +17,9 @@ router.use('/customers/:id',function(req,res,next){
 // Get marketplace main page - customers
 router.get('/customers/:id',function(req,res){
   model.Item.findAll().then(function(rowsItems){
+    for(let i = 0; i < rowsItems.length; i++){
+      rowsItems[i].item_price = formatCurrency(rowsItems[i].item_price,opts)
+    }
     model.Customer.findAll(
       {
         where: {id: req.params.id}

@@ -17,6 +17,9 @@ router.use('/suppliers/:id',function(req,res,next){
 // Get marketplace main page - suppliers
 router.get('/suppliers/:id',function(req,res){
   model.Item.findAll().then(function(rowsItems){
+    for(let i = 0; i < rowsItems.length; i++){
+      rowsItems[i].item_selling_price = formatCurrency(rowsItems[i].item_selling_price,opts)
+    }
     model.Supplier.findAll(
       {
         where: {id: req.params.id}
