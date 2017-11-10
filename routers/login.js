@@ -32,7 +32,7 @@ router.post('/',function(req,res){
       }
     }
     else{
-      res.redirect('login',{errMsg:'',session:req.session.username})
+      res.render('login',{errMsg:'',session:req.session.username})
     }
   }).catch(function(err){
     res.render('login',{errMsg:err,session:req.session.username})

@@ -4,6 +4,11 @@
     <%= log %>
   </div>
 <% } %>
+<% if(hasOwnProperty('errMsg')){%>
+    <div class="alert alert-danger">
+      <h4>No supplier yet, please assign supplier first</h4>
+    </div>
+  <% } %>
 <div class="container">
   <div data-role="main" class="ui-content">
     <form>
